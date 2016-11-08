@@ -1,19 +1,19 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Public access bucket for dev.bambora.com",
+    "Description": "Public access bucket for dev-apac.bambora.com",
     "Resources" : {
         "Bucket" : {
             "Type" : "AWS::S3::Bucket",
             "Properties" : {
                 "AccessControl" : "PublicRead",
-                "BucketName" : "dev.bambora.com",
+                "BucketName" : "dev-apac.bambora.com",
                 "WebsiteConfiguration" : {
                     "ErrorDocument" : "error.html",
                     "IndexDocument" : "index.html"
                 },
                 "LoggingConfiguration" : {
                     "DestinationBucketName" : { "Fn::Join" : [ "-", [ "bambora", "weblogs", "prod", { "Ref" : "AWS::Region" } ] ] },
-                    "LogFilePrefix" : { "Fn::Join" : [ "", [ "dev-portal", "/" ] ] }
+                    "LogFilePrefix" : { "Fn::Join" : [ "", [ "dev-apac-portal", "/" ] ] }
                 }
             }
         }
