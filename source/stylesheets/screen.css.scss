@@ -182,7 +182,7 @@ html, body {
       padding-top: 20px;
       padding-bottom: -0.25em;
     }
-    
+
   }
 
   .tocify-item>a, .toc-footer li {
@@ -334,7 +334,7 @@ html, body {
   // I know, it's hackish, but it's the simplist way to make the left
   // half of the content always this background color.
   .dark-box {
-    width: $examples-width;
+    width: 0;
     background-color: $examples-bg;
     position: absolute;
     right: 0;
@@ -436,15 +436,15 @@ html, body {
     padding-bottom: 1.2em;
     border-top: 3px solid lightgrey;
   }
-  
+
   a{
     color: #664c8e;
     text-decoration: underline;
-    transition: all 100ms ease-out;    
+    transition: all 100ms ease-out;
     &:hover{
       color:#cbb7e7
     }
-	
+
 	&.calltoaction{
 		display: inline-block;
 		line-height: 30px;
@@ -453,7 +453,7 @@ html, body {
 		color: white;
 		background: #664c8e;
 		text-decoration: none;
-		
+
 		&:hover{
 			background: #8f73b0;
 			transition: all .18s ease;
@@ -592,48 +592,48 @@ html, body {
     border: 1px solid #F7E633;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
-  
+
   section{
 	margin-right: 50%;
 	background-color: silver;
 	padding: 28px;
-	
+
 	label{
 		display: inline-block;
 		margin: 24px 0 3px;
 	}
-	
+
 	input[type='text'], textarea{
 		width: 100% !important;
 		padding: 10px;
 		box-sizing: border-box;
 	}
-	
-	
+
+
 	ul.alternatingList{
 		margin: 5px 0 0 0;
 		padding: 0;
 		clear: both;
 		overflow: auto;
-		
+
 		li{
 			list-style: none;
 			float: left;
 			margin-right: 3px;
 		}
-		
+
 		li:nth-child(odd){
 			font-weight: bold;
 		}
 	}
-	
+
 	ul.url-parameters{
 		margin: 5px 0 0 0;
 		padding: 0;
 		width: 100%;
 		clear: both;
 		overflow: auto;
-		
+
 		li{
 			float: left;
 			list-style: none;
@@ -650,9 +650,9 @@ html, body {
 			width: 60%;
 		}
 	}
-	
+
 	.hash-comparison{
-		
+
 		.valid{
 			background: rgb(91,181,99);
 			transition: 0.5s;
@@ -673,11 +673,11 @@ html, body {
 	}
 
   }
-  
+
   .text{
 		word-wrap: break-word;
 	}
-	
+
 	.faq{
 		background: #dcddde;
 		margin-bottom: 30px;
@@ -703,10 +703,13 @@ html, body {
 
     padding: 2em $main-padding;
     margin: 0;
-    width: $examples-width;
+    /*width: $examples-width;*/
+    width: calc(100% - 10px);
 
-    float:right;
-    clear:right;
+
+
+    float:none;
+    clear:none;
 
     box-sizing: border-box;
 
@@ -736,7 +739,7 @@ html, body {
 }
 
 // FORMS
-// webkit, remove outer glow on element focus 
+// webkit, remove outer glow on element focus
 :focus {
     outline-color: transparent;
     outline-style: none;
@@ -780,8 +783,8 @@ html, body {
         width: 40%;
         border-radius: 2px;
         border: 1px solid #aeb1b2;
-        padding: 14px 20px 13px;        
-        transition: all 100ms ease-out;    
+        padding: 14px 20px 13px;
+        transition: all 100ms ease-out;
         &:focus {
             border: 1px solid $main-text;
         }
@@ -853,5 +856,5 @@ html, body {
       width: 80%;
 	  padding: 6px;
     }
-  }   
+  }
 }
