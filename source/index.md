@@ -1,21 +1,23 @@
 ---
 title: dev/bambora
 
+language_tabs:
+  - shell: cURL
+  - java
+
 toc_above:
-  - <a href='index.html'>Getting Started</a>
+- <a href='index.html'>Getting Started</a>
 
 includes:
 
 toc_below:
-  - <span>APIs</span>
-  - <a href='payment-api.html'>Payment</a>
-  - <a href='tokenisation_api.html'>Tokenisation</a>
-  - <a href='customer_registration_api.html'>Customer Registration</a>
-  - <a href='reporting_api.html'>Reporting</a>
-  - <a href='batch_payment_api.html'>Batch Payment</a>
-  - <span>Hosted Payment Page</span>
-  - <a href='hpp.html'>HPP</a>
-  - <a href='ihpp.html'>iHPP</a>
+- <span>APIs</span>
+- <a href='customer_registration_api.html'>Customer Registration</a>
+- <a href='payment_api.html'>Payments</a>
+- <a href='recurring_payment_api.html'>Recurring Payment</a>
+- <span>Hosted Payment Page</span>
+- <a href='hpp.html'>HPP</a>
+- <a href='ihpp.html'>iHPP</a>
 
 search: false
 ---
@@ -26,31 +28,46 @@ search: false
 
 Welcome to the developer documentation for Bambora APAC (Australia and New Zealand).
 
-### Step 1: Request a developer account
-Request an account by emailing [sales@ippayments.com](mailto:sales@ippayments.com) with 'New Account' in the subject line. We will reply with 2 sets of credentials, one for the back office and the other for the API.
+### Step 1: Create a test account
+You can create a account at [http://dev-onboarding.ippayments.com.au/](http://dev-onboarding.ippayments.com.au/). You will receive an email with 2 sets of credentials, one for the back office and the other for the API.
 
 ### Step 2: Make a test payment using the API
-The easiest way to make a test payment is by calling the SOAP API using Postman. PostMan is a simple tool that allows you to send HTTP requests to a server. It is normally used for testing RESTful API, but it also works for SOAP APIs. You can download Postman [here](https://www.getpostman.com/)
 
-2.1. Set the request Method and URL
+```shell
+curl https://demo.ippayments.com.au/interface/api/dts.asmx  \
+  -H "Content-Type: text/xml" \
+  -d '<?xml version="1.0" encoding="UTF-8"?>
+      <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dts="http://www.ippayments.com.au/interface/api/dts">
+        <soapenv:Header />
+        <soapenv:Body>
+          <dts:SubmitSinglePayment>
+            <!--Optional:-->
+            <dts:trnXML><![CDATA[<Transaction>
+          <CustNumber>cust_number</CustNumber>
+          <CustRef>any_str</CustRef>
+          <Amount>1000</Amount>
 
-Set the Method to POST and URL to `https://demo.ippayments.com.au/interface/api/dts.asmx`
+          <TrnType>1</TrnType>
+          <CreditCard Registered="True">
+          </CreditCard>
+          <Security>
+              <UserName>your_api_username</UserName>
+              <Password>your_api_password</Password>
+          </Security>
+          <UserDefined></UserDefined>
+      </Transaction>]]></dts:trnXML>
+          </dts:SubmitSinglePayment>
+        </soapenv:Body>
+      </soapenv:Envelope>'
+```
 
-2.2. Set request headers
+```java
+Java SDK code sample coming soon.
+```
 
-Set `Content-Type: text/xml`
-<img src="/images/postman/headers.png"/>
+You can test the service by copy and pasting the cURL code sample into a text editor, replacing the credential and customer registration placeholders and then executing the updated code sample in Terminal.
 
-2.3. Set xml in the request body
-
-<a class="copy-button">Click here</a> to copy the text to clipboard. Replace the credential placeholders ('your_api_username', 'your_api_password') with the API credentials that you requested in Step 1.
-
-<img src="/images/postman/body.png"/>
-
-2.4. Click Send and take a look at the response
-
-You will know that your payment request was successful if the Receipt field in the response object is populated and the DeclineCode field is not.
-<img src="/images/postman/response.png"/>
+If you are not comfortable using Terminal you can also Postman to make a test payment by calling the SOAP API. PostMan is a simple app that allows you to send HTTP requests to a server. It is normally used for testing RESTful APIs, but it also works for SOAP APIs. You can download Postman [here](https://www.getpostman.com/)
 
 ### Step 3: View your test transaction in the back office
 
