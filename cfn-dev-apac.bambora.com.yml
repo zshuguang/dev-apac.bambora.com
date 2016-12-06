@@ -1,0 +1,96 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: dev-apac.bambora.com
+
+Conditions:
+  CreateProdResources: !Equals [!Ref Environment, 'prod']
+
+Mappings:
+    EnvMap:
+        test:
+            BucketName: bambora-dev-apac-portal-test-eu-west-1
+        prod:
+            BucketName: dev-apac.bambora.com
+
+Outputs:
+    BucketName:
+        Value:
+            !Ref Bucket
+
+Parameters:
+    Environment:
+        Description: Environment to deploy to.
+        Type: String
+        AllowedValues:
+        - test
+        - prod
+
+Resources:
+    Bucket:
+        Type: AWS::S3::Bucket
+        Properties:
+            AccessControl: PublicRead
+            BucketName: !FindInMap [ EnvMap, !Ref Environment, BucketName ]
+            LoggingConfiguration:
+                DestinationBucketName: !Join [ "-", [ bambora, weblogs, !Ref Environment, !Ref "AWS::Region" ]]
+                LogFilePrefix: dev-apac-portal
+            WebsiteConfiguration:
+                ErrorDocument: error.html
+                IndexDocument: index.html
+
+    BucketPolicy:
+        Type: AWS::S3::BucketPolicy
+        Condition: CreateProdResources
+        Properties:
+            Bucket: !Ref Bucket
+            PolicyDocument:
+                Statement: 
+                - 
+                    Action: 
+                        - "s3:GetObject"
+                    Effect: "Allow"
+                    Resource: 
+                        Fn::Join: 
+                        - ""
+                        - 
+                            - "arn:aws:s3:::"
+                            - 
+                              Ref: "Bucket"
+                            - "/*"
+                    Principal:
+                        CanonicalUser: "0fd7e38255b8ba5678e9b020ad3101f57c125aabb1ef7e9dce3fc6fc321311dee6dbd95b9220c6f516630e565a91ddfa"
+
+    Distribution:
+        Type: AWS::CloudFront::Distribution
+        Condition: CreateProdResources
+        Properties:
+            DistributionConfig:
+                Aliases:
+                - dev-apac.bambora.com
+                Comment: Cloudfront Distribution for dev-apac
+                DefaultCacheBehavior:
+                    AllowedMethods:
+                    - GET
+                    - HEAD
+                    - OPTIONS
+                    ForwardedValues:
+                        QueryString: 'false'
+                        Cookies:
+                            Forward: none
+                    TargetOriginId: dev-apac
+                    ViewerProtocolPolicy : redirect-to-https
+                DefaultRootObject: index.html
+                Enabled: true
+                Logging:
+                    Bucket: bambora-weblogs-prod-eu-west-1.s3.amazonaws.com
+                    IncludeCookies: false
+                    Prefix: cloudfront-dev-apac-portal
+                Origins:
+                    - DomainName: dev-apac.bambora.com.s3.amazonaws.com
+                      Id: dev-apac
+                      S3OriginConfig:
+                        OriginAccessIdentity: origin-access-identity/cloudfront/E3JSUKK4YSD1SW
+                PriceClass: PriceClass_All
+                ViewerCertificate:
+                    IamCertificateId: ASCAIDZP35JT6PXTJWZGY
+                    SslSupportMethod: sni-only
