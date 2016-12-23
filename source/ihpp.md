@@ -23,4 +23,11 @@ search: false
 
 # Overview
 
-You can access full documentation for the Integrated Hosted Payment Page in PDF format [here](https://ippayments.atlassian.net/wiki/download/attachments/30244944/IPP%20iHPP%20-%20Integration%20Guide%20V3.1.pdf?version=2&modificationDate=1476244514725&cacheVersion=1&api=v2).
+Thanks for visiting the Bambora Developer Portal. Here, we’ve outlined how you can start processing online payments. If you have any questions or require assistance, don’t hesitate to get in touch!
+
+Processing online transactions via iHPP requires the following sequence:
+
+1. Session Initiation
+2. Payment Page and Transaction Processing
+
+Let’s go!
