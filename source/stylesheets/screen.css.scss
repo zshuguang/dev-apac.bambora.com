@@ -489,7 +489,10 @@ html, body {
 
   table {
     margin-bottom: 1em;
+    color:#4f5355;
+    font-size: 14px;
     overflow: auto;
+
     th,td {
       text-align: left;
       vertical-align: top;
@@ -498,16 +501,17 @@ html, body {
 
     th {
       padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #FFFFFF;
       vertical-align: bottom;
     }
 
     td {
       padding: 10px;
+      border-bottom: 1px solid #FFFFFF;
     }
 
-    tr:last-child {
-      border-bottom: 1px solid #ccc;
+    tr {
+      background-color: #F5F5F5;
     }
 
     tr:nth-child(odd)>td {
