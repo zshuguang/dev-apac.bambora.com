@@ -12,5 +12,8 @@ node('!master && amazon-linux-64bit-generic') {
     if (env.BRANCH_NAME == "master") {
         stage name: 'Publish to S3'
         sh "aws --region eu-west-1 s3 sync --acl=public-read \"\$PWD\"/build/ s3://dev-apac.bambora.com/"
+    } else if (env.BRANCH_NAME == "develop"){
+        stage name: 'Publish to S3'
+        sh "aws --region eu-west-1 s3 sync --acl=public-read \"\$PWD\"/build/ s3://bambora-dev-apac-portal-test-eu-west-1/"
     }
 }
