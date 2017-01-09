@@ -24,7 +24,7 @@ search: false
 
 # Overview
 
-Thanks for visiting the Bambora Developer Portal. Here, we’ve outlined how you can start processing online payments. If you have any questions or require assistance, don’t hesitate to get in touch 123! 
+Thanks for visiting the Bambora Developer Portal. Here, we’ve outlined how you can start processing online payments. If you have any questions or require assistance, don’t hesitate to get in touch! 
 
 Processing online transactions via iHPP requires the following sequence:
 
