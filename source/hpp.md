@@ -3,7 +3,6 @@ title: dev/bambora
 
 language_tabs:
   - shell: cURL
-  - java
 
 toc_above:
 - <a href='index.html'>Getting Started</a>
@@ -38,10 +37,6 @@ curl "https://demo.ippayments.com.au/access/index.aspx" \
 -d 'accountnumber=[AccountNumber]'
 ```
 
-```java
-Java SDK code sample coming soon.
-```
-
 To process a customer’s real time purchase transaction, embed the URL link along with your account number.
 
 This URL will redirect the customer to the payment page where they can enter all the required information and clicks Pay Now.
@@ -61,10 +56,6 @@ curl "https://demo.ippayments.com.au/access/index.aspx" \
 -d 'accountnumber=[AccountNumber]'
 -d 'amount=[Amount]'
 -d 'custref=[Customer Reference]'
-```
-
-```java
-Java SDK code sample coming soon.
 ```
 
 Parameter |         | Description
