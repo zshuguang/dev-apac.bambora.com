@@ -3,8 +3,7 @@ title: dev/bambora
 
 language_tabs:
   - shell: cURL
-  - java
-  
+
 toc_above:
 - <a href='index.html'>Getting Started</a>
 - <span>APIs</span>
@@ -55,9 +54,6 @@ curl https://demo.ippayments.com.au/interface/api/dts.asmx  \
       </soapenv:Envelope>'
 ```
 
-```java
-Java SDK code sample coming soon.
-```
 
 Our Payment service allows you to submit Single Payments, Capture Payments (pre-authorise payments), Void Transactions, Refund Transactions, and Query Transactions. You can either submit a payment against a new card (see code sample in Quick Start Guide) or against a registered customer (see code sample in this guide).
 
