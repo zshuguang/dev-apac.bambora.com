@@ -32,7 +32,7 @@ You can test the service by copy and pasting the cURL code sample into a text ed
 
 # Submit Single Payment
 
-Submit an online transactions via API
+Submit an online transaction via API
 
 ```shell
 curl "https://demo.ippayments.com.au/interface/api/dts.asmx"  \
